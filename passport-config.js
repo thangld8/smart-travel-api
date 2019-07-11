@@ -1,8 +1,8 @@
 const {Strategy, ExtractJwt} = require('passport-jwt');
 require('dotenv').config();
-const config = require('./public/config/config.json');
-const mongoose = require('mongoose');
-const User = require('./public/models/user');
+const config = require('./public/config/config.js');
+// const mongoose = require('mongoose');
+const Teacher = require('./public/models').Teacher;
 const opts = {
     jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
     secretOrKey: config.privateKey
@@ -12,14 +12,12 @@ const opts = {
 module.exports = passport => {
     passport.use(
         new Strategy(opts, (payload, done) => {
-            console.log(333333, payload)
-             User.findById(payload.id)
-                 .then(user => {
-                     if(user){
+             Teacher.findByPk(payload.id)
+                 .then(teacher => {
+                     if(teacher){
                        return done(null, {
-                           id: user.id,
-                           name: user.name,
-                           email: user.email,
+                           id: teacher.id,
+                           email: teacher.email,
                        });
                      }
                      return done(null, false);
