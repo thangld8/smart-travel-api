@@ -1,3 +1,9 @@
+/*
+ * @Author: ThangLD
+ * @Email: ThangLDse03529@gmail.com
+ * @Account Controller - student-common.js
+ */
+
 const Student = require('../models').Student;
 const Util = require('../utils/emailHelper');
 

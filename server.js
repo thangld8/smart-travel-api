@@ -1,3 +1,9 @@
+/*
+ * @Author: ThangLD
+ * @Email: ThangLDse03529@gmail.com
+ * @Account Main - Server.js
+ */
+
 const createError = require('http-errors');
 const express = require('express');
 const path = require('path');

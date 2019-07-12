@@ -1,6 +1,16 @@
+/*
+ * @Author: ThangLD
+ * @Email: ThangLDse03529@gmail.com
+ * @Account Controller - student.js
+ */
+
 const Student = require("../models").Student;
 const emailHelper = require("../utils/emailHelper");
 
+/**
+* @param  {} (registedTeacher, listedStudent, res)
+* create student from listedStudent and registed Teacher
+*/
 const createStudent = async (registedTeacher, listedStudent, res) => {
     let dataStudent = [];
     let resData = [];
@@ -11,7 +21,6 @@ const createStudent = async (registedTeacher, listedStudent, res) => {
             registedBy: registedTeacher
         })
     });
-    console.log(22222, dataStudent)
     await registerStudent(dataStudent, resData);
 
     if (resData) {
@@ -25,11 +34,14 @@ const createStudent = async (registedTeacher, listedStudent, res) => {
     
 }
 
+/**
+* @param  {} (dataStudent, resData)
+* trigger addUser function
+*/
 const registerStudent = async (dataStudent, resData) => {
     await Promise.all(dataStudent.map(async dtStudent => {
         try {
             const result = await addUser(dtStudent)
-            console.log(3333, result)
             resData.push(result);
         } catch (error) {
             throw error;
@@ -38,13 +50,16 @@ const registerStudent = async (dataStudent, resData) => {
     }));
 }
 
+/**
+* @param  {} (emailStudent, emailTeacher, res)
+* suspend student
+*/
 const suspendStudent = async (emailStudent, emailTeacher, res) => {
     const waitingForProcess = await Promise.all([findStudentForSuspendByEmail(emailStudent, emailTeacher), findStudentByEmail(emailStudent)]);
     let dataRes = {
         isSuccess: true,
         message: `The Student ${emailStudent} is suspended!`
     }
-    console.log(11, waitingForProcess)
     if (waitingForProcess[0].isSuccess && waitingForProcess[1].isSuccess && waitingForProcess[0].data) {
         return res.status(204);
     } else if (waitingForProcess[0].isSuccess && waitingForProcess[1].isSuccess && waitingForProcess[0].message) {
@@ -58,6 +73,10 @@ const suspendStudent = async (emailStudent, emailTeacher, res) => {
     }
 }
 
+/**
+* @param  {} (emailStudent, emailTeacher)
+* find student for suspend student
+*/
 const findStudentForSuspendByEmail = async (emailStudent, emailTeacher) => {
     return new Promise((resolve, reject) => {
         Student.findOne({
@@ -101,6 +120,10 @@ const findStudentForSuspendByEmail = async (emailStudent, emailTeacher) => {
     });
 } 
 
+/**
+* @param  {} emailStudent
+* find student by email
+*/
 const findStudentByEmail = async (emailStudent) => {
     return new Promise((resolve, reject) => {
         Student.findAll({
@@ -128,6 +151,10 @@ const findStudentByEmail = async (emailStudent) => {
     });
 }
 
+/**
+* @param  {} (emailStudent, emailTeacher)
+* Add User into Database
+*/
 const addUser = async (dtStudent) => {
     return new Promise((resolve, reject) => {
         Student.findOrCreate({
@@ -147,12 +174,11 @@ const addUser = async (dtStudent) => {
                 }).then(stu => {
                     if (stu) {
                         try {
-                            console.log(112233, stu[0].dataValues);
                             stu.map(async studentInfo => {
+                                //get list of registed student email from teacher
                                 const registedEmailByTeachers = emailHelper.splitemail(studentInfo.dataValues.registedBy);
-                                console.log('registedEmailByTeachers:', registedEmailByTeachers);
+                                // check student is registered or not
                                 const resultSearch = registedEmailByTeachers.filter(elem => elem === dtStudent.registedBy);
-                                console.log('resultSearch:', resultSearch);
 
                                 if (resultSearch.length === 0) {
                                     studentInfo.dataValues.registedBy = dtStudent.registedBy;
@@ -161,7 +187,6 @@ const addUser = async (dtStudent) => {
                                         isSubspend: false,
                                         registedBy: studentInfo.dataValues.registedBy
                                     };
-                                    console.log('dataStudent', dataStudnet);
                                     await Student.create(dataStudnet).then(data => {
                                         const response = {
                                             'isRegisted': true,
@@ -187,7 +212,7 @@ const addUser = async (dtStudent) => {
                             
 
                         } catch (error) {
-                            console.log(112244, error);
+                            console.log('Error', error);
                         }
                     }
                 })

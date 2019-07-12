@@ -1,3 +1,8 @@
+/*
+ * @Author: ThangLD
+ * @Email: ThangLDse03529@gmail.com
+ * @Account Controller - teacher.js
+ */
 const Teacher = require('../models').Teacher;
 const bcrypt = require('bcryptjs');
 const passport = require('passport');
@@ -5,6 +10,10 @@ const jwt = require('jsonwebtoken');
 const config = require('../config/config.js');
 const Email = require('../utils/emailHelper')
 
+/**
+* @param  {} (req, res)
+* register for teacher from email and password
+*/
 const registerUser = async (req, res) => {
     const body = req.body;
     const email = body.email;
@@ -59,6 +68,10 @@ const registerUser = async (req, res) => {
     }
 }
 
+/**
+* @param  {} (req, res)
+* login with teacher's emai
+*/
 const login = async(req, res) => {
     const body = req.body;
     const email = body.email;
@@ -97,6 +110,10 @@ const login = async(req, res) => {
     }
 }
 
+/**
+* @param  {} (password, teacher, res, errors)
+* Decrypt and compare password from client and database
+*/
 function comparePassword(password, teacher, res, errors) {
     
     bcrypt.compare(password, teacher.password)

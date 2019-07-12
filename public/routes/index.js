@@ -1,3 +1,9 @@
+/*
+ * @Author: ThangLD
+ * @Email: ThangLDse03529@gmail.com
+ * @Account: Routes
+ */
+
 const express = require('express');
 const router = express.Router();
 const bcrypt = require('bcryptjs');
