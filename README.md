@@ -16,11 +16,11 @@ You can see a hosted version of:
 
 * Node 8
 * Git
-* Ask me for .Env file(or I can help you to setup the environment)
+* Ask me for .Env file(or I can help you to set up the environment)
 
 ### Common setup
 
-* Clone the repo and install the depencies.
+* Clone the repo and install the dependencies.
 
 ```bash
 git clone https://github.com/thangld8/smart-travel-api
@@ -36,7 +36,7 @@ npm install
 npm start
 ```
 
-- `I only have 1 environment so the default enviroment is: development`
+- `I only have 1 environment so the default environment is: development`
 
 ## Travel around
 
@@ -44,7 +44,7 @@ npm start
 `Note: I already built 7 Apis(3 non-auth and 4 auth Apis) and you can also ask me for Postman collections`
 #### Non-Auth Apis for Register, Login and health check. As a teacher you can login and start your management:
 
-- GET: `{{url}}`/ :  will show the api ready or not 
+- GET: `{{url}}`/ :  will show the Api ready or not 
     ```Javascript
         return {
             "message": "Hi"
