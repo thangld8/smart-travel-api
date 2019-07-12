@@ -10,7 +10,6 @@ const splitemail = (emails) => {
 const getListEmailFromNotification = (notification) => {
     let splitEmail = notification.split('\ \@');
     splitEmail = splitEmail.filter(email => checkEmail(email));
-    console.log('splitEmail', splitEmail);
     return splitEmail;
 }
 

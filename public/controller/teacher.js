@@ -118,7 +118,7 @@ function comparePassword(password, teacher, res, errors) {
                         return res.json({
                             'isLogin': true,
                             token: `Bearer ${token}`,
-                            email: teacher.name
+                            email: teacher.email
                         });
                     });
             } else {

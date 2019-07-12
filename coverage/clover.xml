@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<coverage generated="1562835197234" clover="3.2.0">
+  <project timestamp="1562835197235" name="All files">
+    <metrics statements="30" coveredstatements="30" conditionals="8" coveredconditionals="8" methods="13" coveredmethods="13" elements="51" coveredelements="51" complexity="0" loc="30" ncloc="30" packages="1" files="1" classes="1"/>
+    <file name="emailHelper.js" path="/Users/vanlong_nguyen/Documents/workspace/Investigation/sU/Backend/public/utils/emailHelper.js">
+      <metrics statements="30" coveredstatements="30" conditionals="8" coveredconditionals="8" methods="13" coveredmethods="13"/>
+      <line num="1" count="1" type="stmt"/>
+      <line num="2" count="7" type="stmt"/>
+      <line num="3" count="7" type="stmt"/>
+      <line num="6" count="1" type="stmt"/>
+      <line num="7" count="1" type="stmt"/>
+      <line num="10" count="1" type="stmt"/>
+      <line num="11" count="1" type="stmt"/>
+      <line num="12" count="5" type="stmt"/>
+      <line num="13" count="1" type="stmt"/>
+      <line num="16" count="1" type="stmt"/>
+      <line num="17" count="2" type="stmt"/>
+      <line num="19" count="5" type="stmt"/>
+      <line num="25" count="5" type="cond" truecount="2" falsecount="0"/>
+      <line num="26" count="5" type="stmt"/>
+      <line num="29" count="4" type="stmt"/>
+      <line num="32" count="1" type="stmt"/>
+      <line num="33" count="1" type="stmt"/>
+      <line num="34" count="1" type="stmt"/>
+      <line num="35" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="36" count="2" type="stmt"/>
+      <line num="38" count="3" type="stmt"/>
+      <line num="41" count="1" type="stmt"/>
+      <line num="42" count="3" type="stmt"/>
+      <line num="43" count="6" type="cond" truecount="2" falsecount="0"/>
+      <line num="44" count="3" type="stmt"/>
+      <line num="45" count="3" type="cond" truecount="2" falsecount="0"/>
+      <line num="46" count="1" type="stmt"/>
+      <line num="47" count="1" type="stmt"/>
+      <line num="53" count="1" type="stmt"/>
+      <line num="57" count="1" type="stmt"/>
+    </file>
+  </project>
+</coverage>
