@@ -61,7 +61,7 @@ const suspendStudent = async (emailStudent, emailTeacher, res) => {
         message: `The Student ${emailStudent} is suspended!`
     }
     if (waitingForProcess[0].isSuccess && waitingForProcess[1].isSuccess && waitingForProcess[0].data) {
-        return res.status(204);
+        return res.status(204).json({});
     } else if (waitingForProcess[0].isSuccess && waitingForProcess[1].isSuccess && waitingForProcess[0].message) {
         dataRes.isSuccess = false;
         dataRes.message = `You only can suspend who not suspended and regiestered by ${emailTeacher}`;

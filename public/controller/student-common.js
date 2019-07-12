@@ -7,6 +7,10 @@
 const Student = require('../models').Student;
 const Util = require('../utils/emailHelper');
 
+/**
+* @param  {} (req, res)
+* main function for getting studnet's email by teacher's email
+*/
 const getListStudentByTeachersEmail = async (req, res) => {
     const reqQuery = req.query;
     let result;
@@ -23,6 +27,10 @@ const getListStudentByTeachersEmail = async (req, res) => {
     return res.status(500).json({});
 }
 
+/**
+* @param  {} teacherEmail
+* get all student who registered by a teacher
+*/
 const getListStudentByAnEmail = async (teacherEmail) => {
     return new Promise((resolve, reject) => {
         Student.findAll({
@@ -57,6 +65,10 @@ const getListStudentByAnEmail = async (teacherEmail) => {
     })
 }
 
+/**
+* @param  {} teacherEmails
+* get all student who registered by teachers
+*/
 const getListStudentByMultipleEmail = async (teacherEmails) => {
     return new Promise((resolve, reject) => {
         Student.findAll({
@@ -92,6 +104,10 @@ const getListStudentByMultipleEmail = async (teacherEmails) => {
     })
 }
 
+/**
+* @param  {} (req, res)
+* get list of student from notification
+*/
 const getListStudentForNotifications = async (req, res) => {
     const body = req.body;
     const notification = body.notification;
@@ -127,6 +143,10 @@ const getListStudentForNotifications = async (req, res) => {
     return flagSuccess ? res.status(200).json(resData) : res.status(500).json(resData);
 }
 
+/**
+* @param  {} getData)
+* get list of uniqe student 
+*/
 const filterEmail = (getData) => {
     let filteredEmail0 = getData[0].students.filter(student => {
         return getData[1].students.indexOf(student.email) < 0;
@@ -136,6 +156,10 @@ const filterEmail = (getData) => {
     return filteredEmail0;
 }
 
+/**
+* @param  {} studentEmails
+* get all student in listed
+*/
 const getListStudentFromNotification = async (studentEmails) => {
     return new Promise((resolve, reject) => {
         Student.findAll({
