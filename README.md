@@ -124,5 +124,5 @@ You can also deploy this app to Heroku:
 
 ## Further help
 
-- Email: `thangldse03529@gmail.com`
-- Website: <a href="`http://thangldcv.herokuapp.com`" target="_blank">MyWebsite</a>
+- Email: `thangldse03529@gmail.com`.
+- Website: <a href="http://thangldcv.herokuapp.com" target="_blank">My Website</a>.
